@@ -10,7 +10,7 @@ const Map = () => {
   useEffect(() => {
     const map = new maplibregl.Map({
       container: "map",
-      style: "https://api.maptiler.com/maps/topo-v2/style.json?key=" + mapTilerKey, // stylesheet location
+      style: "https://api.maptiler.com/maps/basic-v2/style.json?key=" + mapTilerKey, // stylesheet location
       center: [34, 40], // starting position [lng, lat]
       zoom: 4, // starting zoom
     });
