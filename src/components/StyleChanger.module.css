@@ -1,0 +1,20 @@
+.radioinputdiv {
+    margin-bottom: 5px; 
+    position: relative; 
+    border: 2px solid black; 
+    border-radius : 10px 10px 10px 10px; 
+    overflow : hidden; 
+    height: 40px;
+  }
+
+  .radioUl {
+    position : fixed; 
+    top : 25px; 
+    right : 25px;
+  }
+
+  .radioinput {
+    top : 50%;
+    position: absolute;
+                        
+  }
