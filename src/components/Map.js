@@ -21,7 +21,7 @@ const Map = () => {
     map.current.on("load", function () {
       const sourceId = addGeojsonSource(
         "https://raw.githubusercontent.com/utahemre/maplibre-gl-example-project/master/public/testdata/population.geojson",
-        addPolygonLayer, {'fill-color' : 'green', 'fill-opacity' : 0.5}
+        addPolygonLayer, {'fill-color' : 'red', 'fill-opacity' : 0.5, 'fill-outline-color' : 'white'}
         
       );
       

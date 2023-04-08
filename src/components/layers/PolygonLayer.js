@@ -10,7 +10,7 @@ export function polygonLayer(_sourceId, _layerProperties) {
             'paint': {
                 'fill-color': _layerProperties['fill-color'] ? _layerProperties['fill-color'] : 'red',
                 'fill-opacity': _layerProperties['fill-opacity'] ? _layerProperties['fill-opacity'] : 0.8,
-                'fill-outline-color' : null
+                'fill-outline-color' :  _layerProperties['fill-outline-color'] ? _layerProperties['fill-outline-color'] : 'black',
                 }
         }
     );
