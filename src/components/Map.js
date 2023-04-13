@@ -55,6 +55,8 @@ const Map = () => {
         50000000,
         '#8B0000'
     ], 'fill-extrusion-opacity' : 0.8, 'fill-extrusion-height': ["/",["get", "population"], 50]}
+ );
+      
 
     });
   }, []);
