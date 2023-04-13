@@ -5,7 +5,7 @@ import { mapTilerKey } from "./Constants";
 import { v4 as uuidv4 } from 'uuid';
 import axios from "axios";
 import { geojsonSource } from "./sources/Sources";
-import { polygonLayer } from "./layers/PolygonLayer";
+import { polygonLayer, polygonLayer3D } from "./layers/PolygonLayer";
 
 const Map = () => {
   
@@ -22,7 +22,7 @@ const Map = () => {
       /*addGeojsonSource("https://raw.githubusercontent.com/utahemre/maplibre-gl-example-project/master/public/testdata/population.geojson",
         addPolygonLayer, {'fill-color' : 'red', 'fill-opacity' : 0.5, 'fill-outline-color' : 'white'}
       );*/
-      addGeojsonSource("https://raw.githubusercontent.com/utahemre/maplibre-gl-example-project/master/public/testdata/population.geojson",
+      /*addGeojsonSource("https://raw.githubusercontent.com/utahemre/maplibre-gl-example-project/master/public/testdata/population.geojson",
         addPolygonLayer, {'fill-color':
         [
             'step',
@@ -37,8 +37,24 @@ const Map = () => {
             50000000,
             '#8B0000'
         ], 'fill-opacity' : 0.5, 'fill-outline-color' : 'black'}
-      );
-      
+      );*/
+      /*addGeojsonSource("https://raw.githubusercontent.com/utahemre/maplibre-gl-example-project/master/public/testdata/population.geojson",
+      addPolygonLayer3D, {'fill-extrusion-color' : 'white', 'fill-extrusion-opacity' : 0.8, 'fill-extrusion-height': ["/",["get", "population"], 50]}*/
+
+      addGeojsonSource("https://raw.githubusercontent.com/utahemre/maplibre-gl-example-project/master/public/testdata/population.geojson",
+      addPolygonLayer3D, {'fill-extrusion-color' : [
+        'step',
+        ['get', 'population'],
+        '#00FF00',
+        500000,
+        '#FFFF00',
+        1000000,
+        '#FFA500',
+        3000000,
+        '#FF0000',
+        50000000,
+        '#8B0000'
+    ], 'fill-extrusion-opacity' : 0.8, 'fill-extrusion-height': ["/",["get", "population"], 50]}
 
     });
   }, []);
@@ -67,6 +83,11 @@ const Map = () => {
   const addPolygonLayer = (_sourceId, _layerProperties) => {
     const polygonLayerInstance = polygonLayer(_sourceId, _layerProperties);
     map.current.addLayer(polygonLayerInstance);
+  };
+
+  const addPolygonLayer3D = (_sourceId, _layerProperties) => {
+    const polygonLayer3DInstance = polygonLayer3D(_sourceId, _layerProperties);
+    map.current.addLayer(polygonLayer3DInstance);
   };
 
   return (
