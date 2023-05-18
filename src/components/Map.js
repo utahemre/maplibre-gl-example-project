@@ -6,6 +6,7 @@ import { v4 as uuidv4 } from 'uuid';
 import axios from "axios";
 import { geojsonSource } from "./sources/Sources";
 import { polygonLayer, polygonLayer3D } from "./layers/PolygonLayer";
+import { lineLayer } from "./layers/LineLayer";
 
 const Map = () => {
   
@@ -41,7 +42,7 @@ const Map = () => {
       /*addGeojsonSource("https://raw.githubusercontent.com/utahemre/maplibre-gl-example-project/master/public/testdata/population.geojson",
       addPolygonLayer3D, {'fill-extrusion-color' : 'white', 'fill-extrusion-opacity' : 0.8, 'fill-extrusion-height': ["/",["get", "population"], 50]}*/
 
-      addGeojsonSource("https://raw.githubusercontent.com/utahemre/maplibre-gl-example-project/master/public/testdata/population.geojson",
+      /*addGeojsonSource("https://raw.githubusercontent.com/utahemre/maplibre-gl-example-project/master/public/testdata/population.geojson",
       addPolygonLayer3D, {'fill-extrusion-color' : [
         'step',
         ['get', 'population'],
@@ -55,7 +56,10 @@ const Map = () => {
         50000000,
         '#8B0000'
     ], 'fill-extrusion-opacity' : 0.8, 'fill-extrusion-height': ["/",["get", "population"], 50]}
- );
+ );*/
+
+ addGeojsonSource("https://d2ad6b4ur7yvpq.cloudfront.net/naturalearth-3.3.0/ne_50m_rivers_lake_centerlines_scale_rank.geojson",
+      addLineLayer, {'line-color' : 'blue', 'line-opacity' : 0.8, 'line-width' : 2}); 
       
 
     });
@@ -90,6 +94,11 @@ const Map = () => {
   const addPolygonLayer3D = (_sourceId, _layerProperties) => {
     const polygonLayer3DInstance = polygonLayer3D(_sourceId, _layerProperties);
     map.current.addLayer(polygonLayer3DInstance);
+  };
+
+  const addLineLayer = (_sourceId, _layerProperties) => {
+    const lineLayerInstance = lineLayer(_sourceId, _layerProperties);
+    map.current.addLayer(lineLayerInstance);
   };
 
   return (
