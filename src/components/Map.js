@@ -58,7 +58,7 @@ const Map = () => {
     ], 'fill-extrusion-opacity' : 0.8, 'fill-extrusion-height': ["/",["get", "population"], 50]}
  );*/
 
- addGeojsonSource("https://d2ad6b4ur7yvpq.cloudfront.net/naturalearth-3.3.0/ne_50m_rivers_lake_centerlines_scale_rank.geojson",
+ addGeojsonSource("https://raw.githubusercontent.com/utahemre/maplibre-gl-example-project/master/public/testdata/rivers.geojson",
       addLineLayer, {'line-color' : 'blue', 'line-opacity' : 0.8, 'line-width' : 2}); 
       
 
