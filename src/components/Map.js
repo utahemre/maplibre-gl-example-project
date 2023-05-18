@@ -58,11 +58,23 @@ const Map = () => {
     ], 'fill-extrusion-opacity' : 0.8, 'fill-extrusion-height': ["/",["get", "population"], 50]}
  );*/
 
- addGeojsonSource("https://raw.githubusercontent.com/utahemre/maplibre-gl-example-project/master/public/testdata/rivers.geojson",
-      addLineLayer, {'line-color' : 'blue', 'line-opacity' : 0.8, 'line-width' : 2}); 
-      
+ /*addGeojsonSource("https://raw.githubusercontent.com/utahemre/maplibre-gl-example-project/master/public/testdata/rivers.geojson",
+      addLineLayer, {'line-color' : 'blue', 'line-opacity' : 0.8, 'line-width' : 2}); */
 
-    });
+
+      addGeojsonSource("https://raw.githubusercontent.com/utahemre/maplibre-gl-example-project/master/public/testdata/rivers.geojson",
+      addLineLayer, {
+        'line-color' : [
+          'match',
+          ['get', 'featureclass'],
+          "River", "blue",
+          "Lake Centerline", "red",
+          "black"
+        ], 
+        'line-opacity' : 0.8, 
+        'line-width' : ['get', 'scalerank']});  
+      });
+
   }, []);
 
   const changeStyleHandler = (styleAddress) => {
